@@ -11,47 +11,50 @@ public class MyFrame extends JFrame implements KeyListener{
 	}
 
 	public void keyPressed(KeyEvent e){
-		if(e.getKeyCode() == KeyEvent.VK_UP){
-			drawing.jump();
-			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		if(e.getKeyCode() == KeyEvent.VK_W){
+			drawing.player.jump(); 
+			System.out.println("pos: " + drawing.player.x + ", " + drawing.player.y);
 		}
-		else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-			drawing.moveRight();
-			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		else if(e.getKeyCode() == KeyEvent.VK_D){
+			drawing.player.moveRight();
+			System.out.println("pos: " + drawing.player.x + ", " + drawing.player.y);
 		}
-		else if(e.getKeyCode() == KeyEvent.VK_DOWN){
-			drawing.slide();
-			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		else if(e.getKeyCode() == KeyEvent.VK_S){
+			drawing.player.slide();
+			System.out.println("pos: " + drawing.player.x + ", " + drawing.player.y);
 		}
-		else if(e.getKeyCode() == KeyEvent.VK_LEFT){
-			drawing.moveLeft();
-			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		else if(e.getKeyCode() == KeyEvent.VK_A){
+			drawing.player.moveLeft();
+			System.out.println("pos: " + drawing.player.x + ", " + drawing.player.y);
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_SPACE){
-			drawing.attack();
+			drawing.player.attack();
 			System.out.println("attack");
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_I){
+			drawing.spawnEnemy();
+			System.out.println("Spawn");
 		}
 	}
 
 	public void keyReleased(KeyEvent e){
 
-		if(e.getKeyCode() == KeyEvent.VK_UP){
-			drawing.idle();	
+		if(e.getKeyCode() == KeyEvent.VK_W){
 		}
-		else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-			drawing.idle();
+		else if(e.getKeyCode() == KeyEvent.VK_D){
+			drawing.player.idle();
 			repaint();
 		}
-		else if(e.getKeyCode() == KeyEvent.VK_DOWN){
-			drawing.idle();
+		else if(e.getKeyCode() == KeyEvent.VK_S){
+			drawing.player.idle();
 			repaint();
 		}
-		else if(e.getKeyCode() == KeyEvent.VK_LEFT){
-			drawing.idle1();
+		else if(e.getKeyCode() == KeyEvent.VK_A){
+			drawing.player.idle();
 			repaint();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_SPACE){
-			drawing.idle();
+			drawing.player.idle();
 		}
 	}
 
@@ -66,6 +69,7 @@ public class MyFrame extends JFrame implements KeyListener{
 		gameFrame.setVisible(true);
 		gameFrame.getContentPane().add(gameFrame.drawing);
 		gameFrame.addKeyListener(gameFrame);
+		gameFrame.setResizable(false);
 		System.out.println("practical programming");
 	}
 }
